@@ -3,25 +3,27 @@ using TMPro;
 using UnityEngine;
 using VContainer;
 using R3;
+using UnityEngine.UI;
 
 namespace DenisKim.Core.Presentantion.Views
 {
     public sealed class GameplayPanelView : BaseDisposableMB
     {
         [SerializeField] TextMeshProUGUI _levelStatus;
+        [SerializeField] Button _playButton;
 
         [Inject]
         readonly GameplayPanelViewModel _viewModel;
 
         private void Start()
         {
-            _viewModel.Level.Subscribe(text =>
+            _viewModel.Level.Subscribe(text => _levelStatus.text = text)
+                .AddTo(_compositeDisposable);
+
+            _playButton.OnClickAsObservable().Subscribe(button =>
             {
-                Debug.Log($"View получил новое состо€ние: {text}"); // ƒобавл€ем лог здесь
-                _levelStatus.text = text;
+                _viewModel.OnStartLevel.Execute(button);
             }).AddTo(_compositeDisposable);
-            //_viewModel.Level.Subscribe(text => _levelStatus.text = text)
-            //    .AddTo(_compositeDisposable);
         }
     }
 }

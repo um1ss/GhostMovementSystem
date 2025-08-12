@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using DenisKim.Core.Domain.Contexts;
 
 namespace DenisKim.Core.Infrastructure.States
@@ -6,6 +7,8 @@ namespace DenisKim.Core.Infrastructure.States
     {
         public void SetContext(ILevelContext context);
 
-        void StartLevel();
+        UniTask StartLevel();
+
+        void StopLevel();
     }
 }

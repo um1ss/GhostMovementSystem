@@ -8,27 +8,20 @@ namespace DenisKim.Core
     public class test : MonoBehaviour
     {
         [Inject]
-        GhostLevel ghostLevel;
+        readonly GhostLevel ghostLevel;
         [Inject]
-        SingleLevel single;
+        readonly SingleLevel single;
 
         [Inject]
-        ILevelContext levelContext;
+        readonly ILevelContext levelContext;
 
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
-        {
-        
-        }
-
-        // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.P))
             {
                 levelContext.TransitionTo(single);
             }
-            if (Input.GetKeyDown(KeyCode.W))
+            if (Input.GetKeyDown(KeyCode.L))
             {
                 levelContext.TransitionTo(ghostLevel);
             }

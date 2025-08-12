@@ -15,11 +15,11 @@ namespace DenisKim.Core.LifetimeScopes
 
         protected override void Configure(IContainerBuilder builder)
         {
-            builder.RegisterComponentInNewPrefab(_eventSystem, Lifetime.Scoped)
+            builder.RegisterComponentInNewPrefab(_eventSystem, Lifetime.Singleton)
                 .DontDestroyOnLoad();
             builder.RegisterComponentInNewPrefab(_canvas, Lifetime.Singleton)
                 .DontDestroyOnLoad();
-            builder.RegisterComponentInNewPrefab(_camera, Lifetime.Scoped)
+            builder.RegisterComponentInNewPrefab(_camera, Lifetime.Singleton)
                 .DontDestroyOnLoad();
 
             builder.RegisterEntryPoint<BootstrapSceneEntryPoint>();

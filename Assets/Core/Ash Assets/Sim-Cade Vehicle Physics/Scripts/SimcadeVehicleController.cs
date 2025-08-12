@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -137,7 +135,7 @@ namespace Ashsvp
                 steerInput = Input.GetAxis("Horizontal");
                 brakeInput = Input.GetAxis("Jump");
             }
-            else if(CanDrive && !CanAccelerate)
+            else if (CanDrive && !CanAccelerate)
             {
                 accelerationInput = 0;
                 steerInput = Input.GetAxis("Horizontal");

@@ -15,6 +15,16 @@ MonoBehaviour:
   m_GroupName: Player
   m_GUID: b3f87e8d5d45b7940ba5d2f3e9bd2886
   m_SerializeEntries:
+  - m_GUID: 774fb7f88811b944081a618250a1ce5b
+    m_Address: Ash_BodyGhost
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b31b7087f0b90b542961f17d5af20cbc
+    m_Address: PlayerHUD
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d632dd380a6c76142938a0b623e93059
     m_Address: Ash_Body
     m_ReadOnly: 0

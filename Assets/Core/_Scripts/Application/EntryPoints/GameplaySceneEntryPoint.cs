@@ -12,7 +12,6 @@ namespace DenisKim.Core.LifetimeScopes.Scene
     public class GameplaySceneEntryPoint : IAsyncStartable
     {
         readonly ILevelState _singleLevel;
-        readonly ILevelState _ghostLevel;
 
         readonly ILevelContext _levelContext;
 
@@ -29,15 +28,14 @@ namespace DenisKim.Core.LifetimeScopes.Scene
             _showPanelStrategy = showPersistentPanelStrategy;
             _panelService = panelService;
             _singleLevel = singleLevel;
-            _ghostLevel = ghostLevel;
             _levelContext = levelContext;
         }
 
         public async UniTask StartAsync(CancellationToken cancellation = default)
         {
-            _levelContext.TransitionTo(_ghostLevel);
+            _levelContext.TransitionTo(_singleLevel);
             await _panelService.ShowPanel(_showPanelStrategy,
-                PanelType.Gameplay, "GameplayPanel", new GameplayPanelLifetmeScope());
+                PanelType.Gameplay, "GameplayPanel", new GameplayPanelLifetimeScope());
         }
     }
 }
