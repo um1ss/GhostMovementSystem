@@ -3,9 +3,9 @@ using DenisKim.Core.Infrastructure.States;
 using UnityEngine;
 using VContainer;
 
-namespace DenisKim.Core
+namespace DenisKim.Core.Test
 {
-    public class test : MonoBehaviour
+    public sealed class Test : MonoBehaviour
     {
         [Inject]
         readonly GhostLevel ghostLevel;
