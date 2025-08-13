@@ -12,11 +12,8 @@ namespace DenisKim.Core.LifetimeScopes.Scene
     public class GameplaySceneEntryPoint : IAsyncStartable
     {
         readonly ILevelState _singleLevel;
-
         readonly ILevelContext _levelContext;
-
         readonly IShowPanelStrategy _showPanelStrategy;
-
         readonly IPanelService _panelService;
 
         public GameplaySceneEntryPoint(ILevelContext levelContext,

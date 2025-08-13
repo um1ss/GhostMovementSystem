@@ -4,6 +4,7 @@ using UnityEngine;
 using VContainer;
 using R3;
 using UnityEngine.UI;
+using DenisKim.Core.Test;
 
 namespace DenisKim.Core.Presentantion.Views
 {
@@ -11,6 +12,8 @@ namespace DenisKim.Core.Presentantion.Views
     {
         [SerializeField] TextMeshProUGUI _levelStatus;
         [SerializeField] Button _playButton;
+        [SerializeField] Button _setSingleLevel;
+        [SerializeField] Button _setGhostLevel;
 
         [Inject]
         readonly GameplayPanelViewModel _viewModel;
@@ -23,6 +26,16 @@ namespace DenisKim.Core.Presentantion.Views
             _playButton.OnClickAsObservable().Subscribe(button =>
             {
                 _viewModel.OnStartLevel.Execute(button);
+            }).AddTo(_compositeDisposable);
+
+            _setSingleLevel.OnClickAsObservable().Subscribe(button =>
+            {
+                _viewModel.OnSetSingleLevel.Execute(button);
+            }).AddTo(_compositeDisposable);
+
+            _setGhostLevel.OnClickAsObservable().Subscribe(button =>
+            {
+                _viewModel.OnSetGhostLevel.Execute(button);
             }).AddTo(_compositeDisposable);
         }
     }

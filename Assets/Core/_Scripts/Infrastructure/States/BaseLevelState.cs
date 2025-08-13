@@ -13,7 +13,6 @@ namespace DenisKim.Core.Infrastructure.States
         protected ILevelContext _context;
 
         protected AsyncOperationHandle<GameObject> _handlePlayer;
-        protected GameObject _prefabPlayer;
         protected GameObject _instancePlayer;
 
         protected BaseLevelState(IPlaybackRecorder playbackRecorder)
@@ -28,17 +27,17 @@ namespace DenisKim.Core.Infrastructure.States
 
         public virtual async UniTask StartLevel()
         {
-            if (_prefabPlayer == null)
-            {
+            if (!_handlePlayer.IsValid())
                 _handlePlayer = Addressables.LoadAssetAsync<GameObject>("Ash_Body");
-                _prefabPlayer = await _handlePlayer.ToUniTask();
-            }
-            _instancePlayer = GameObject.Instantiate(_prefabPlayer);
+            await _handlePlayer.ToUniTask();
+            if(_handlePlayer.Status==AsyncOperationStatus.Succeeded)
+                _instancePlayer = GameObject.Instantiate(_handlePlayer.Result);
         }
 
         public virtual void StopLevel()
         {
             GameObject.Destroy(_instancePlayer);
+            Addressables.Release(_handlePlayer);
         }
     }
 }

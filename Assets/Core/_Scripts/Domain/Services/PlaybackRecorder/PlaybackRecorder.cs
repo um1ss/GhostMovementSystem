@@ -8,6 +8,8 @@ namespace DenisKim.Core.Domain.Services
     {
         private readonly PlaybackData _playbackData;
 
+        Vector3 _currentTransform;
+
         private bool _isRecording = false;
 
         public PlaybackRecorder(PlaybackData playbackData)
@@ -26,13 +28,12 @@ namespace DenisKim.Core.Domain.Services
               .TakeWhile(_ => _isRecording)
               .Subscribe(_ =>
               {
-                  var newPosition = transform.position;
-
-                  newPosition.y -= 0.8607845f;
+                  _currentTransform = transform.position;
 
                   _playbackData.frames.Add(new PlaybackData.FrameData
                   {
-                      position = newPosition,
+                      position = new Vector3(_currentTransform.x,
+                      _currentTransform.y - 0.8607845f, _currentTransform.z),
                       rotation = transform.rotation
                   });
               })

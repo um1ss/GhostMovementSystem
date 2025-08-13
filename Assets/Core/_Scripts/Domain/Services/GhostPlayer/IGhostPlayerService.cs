@@ -4,7 +4,7 @@ namespace DenisKim.Core.Domain.Services
 {
     public interface IGhostPlayerService
     {
-        public void StartRecording(Transform transform);
-        public void StopRecording();
+        public void StartPlayRecording(Transform transform);
+        public void StopPlayRecording();
     }
 }

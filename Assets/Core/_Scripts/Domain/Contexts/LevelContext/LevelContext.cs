@@ -49,19 +49,22 @@ namespace DenisKim.Core.Domain.Contexts
         {
             await _panelService.ShowPanel(_showPersistentPanelStrategy, PanelType.PlayerHUD,
                 "PlayerHUD", new PlayerHUDLifetimeScope());
-            if (_prefabEnviroment == null)
+            if (!_handleEnviroment.IsValid())
             {
                 _handleEnviroment = Addressables.LoadAssetAsync<GameObject>("Environment");
-                _prefabEnviroment = await _handleEnviroment.ToUniTask();
             }
-            _instanceEnviroment = _parentLifetimeScope.Container.Instantiate(_prefabEnviroment);
+            await _handleEnviroment.ToUniTask();
+            if (_handleEnviroment.Status == AsyncOperationStatus.Succeeded)
+            {
+                _instanceEnviroment = _parentLifetimeScope.Container.Instantiate(_handleEnviroment.Result);
+            }
             await _levelState.Value.StartLevel();
         }
 
         public async UniTask StopLevel()
         {
             GameObject.Destroy(_instanceEnviroment);
-            _handleEnviroment.Release();
+            Addressables.Release(_handleEnviroment);
             await _panelService.ShowPanel(_showPersistentPanelStrategy, PanelType.Gameplay,
                 "GameplayPanel", new GameplayPanelLifetimeScope());
             _levelState.Value.StopLevel();
@@ -70,6 +73,10 @@ namespace DenisKim.Core.Domain.Contexts
         public override void Dispose()
         {
             base.Dispose();
+            if (_handleEnviroment.IsValid())
+            {
+                Addressables.Release(_handleEnviroment);
+            }
         }
     }
 }

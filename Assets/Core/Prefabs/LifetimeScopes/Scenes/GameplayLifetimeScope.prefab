@@ -48,3 +48,4 @@ MonoBehaviour:
     TypeName: DenisKim.Core.LifetimeScopes.RootLifetimeScope
   autoRun: 1
   autoInjectGameObjects: []
+  PlaybackData: {fileID: 11400000, guid: 0ee40658d59fe3b49a86138de4db273d, type: 2}

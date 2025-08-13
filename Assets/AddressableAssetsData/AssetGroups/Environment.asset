@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Environment
   m_EditorClassIdentifier: 
   m_GroupName: Environment
-  m_GUID: 7ca9abe4544dbd142af0e5adea01c7c9
+  m_GUID: 268982a203a972a4886e2abd665480ac
   m_SerializeEntries:
   - m_GUID: c5fb5e8ebfe260e48a61ecd16656f96b
     m_Address: Environment
@@ -24,5 +24,5 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: 59b0d01a2c2695c4f9a62a182219f34f, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 0f021aca4116a2b41b389c944a8b2c0f, type: 2}
-    - {fileID: 11400000, guid: bb0de372715c6344f94d1f7d3c6c088b, type: 2}
+    - {fileID: 11400000, guid: f283fe38b13cc664086ed281d968204d, type: 2}
+    - {fileID: 11400000, guid: 7e0222204ff9aeb479193ba672c246fe, type: 2}

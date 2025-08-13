@@ -14,7 +14,7 @@ namespace DenisKim.Core.Domain.Services
         {
             _playbackData = playbackData;
         }
-        public void StartRecording(Transform transform)
+        public void StartPlayRecording(Transform transform)
         {
             if (_isPlaying) return;
 
@@ -34,7 +34,7 @@ namespace DenisKim.Core.Domain.Services
                 .AddTo(_compositeDisposable);
         }
 
-        public void StopRecording()
+        public void StopPlayRecording()
         {
             _isPlaying = false;
         }
