@@ -1,10 +1,9 @@
 using DenisKim.Core.Application.ViewModels;
+using R3;
 using TMPro;
 using UnityEngine;
-using VContainer;
-using R3;
 using UnityEngine.UI;
-using DenisKim.Core.Test;
+using VContainer;
 
 namespace DenisKim.Core.Presentantion.Views
 {
